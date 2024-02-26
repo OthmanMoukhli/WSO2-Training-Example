@@ -9,6 +9,9 @@
   <name>WSO2-MS-Training</name>
   <description>WSO2-MS-Training</description>
   <modules>
+    <module>WSO2-MS-TrainingRegistryResources</module>
+    <module>WSO2-MS-TrainingDataSource</module>
+    <module>WSO2-MS-TrainingDataService</module>
     <module>WSO2-MS-TrainingConfigs</module>
     <module>WSO2-MS-TrainingCompositeExporter</module>
   </modules>
