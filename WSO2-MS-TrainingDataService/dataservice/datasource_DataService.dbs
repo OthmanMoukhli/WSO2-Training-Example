@@ -1,0 +1,567 @@
+<data transports="http https" serviceStatus="active" serviceNamespace="http://ws.wso2.org/dataservice" name="datasource_DataService" enableBoxcarring="false" enableBatchRequests="false" disableLegacyBoxcarringMode="false">
+  <description>single service for whole database</description>
+  <config id="default">
+    <property name="carbon_datasource_name">AccountsDataSource</property>
+  </config>
+  <query id="select_all_flights_customers_query" useConfig="default">
+    <sql>SELECT accountID, name, street, city, state, postal, country, accountType, creationDate, miles FROM flights_customers</sql>
+    <result rowName="flights_customers" element="flights_customersCollection">
+      <element name="accountID" xsdType="xs:string" column="accountID" />
+      <element name="country" xsdType="xs:string" column="country" />
+      <element name="city" xsdType="xs:string" column="city" />
+      <element name="street" xsdType="xs:string" column="street" />
+      <element name="accountType" xsdType="xs:string" column="accountType" />
+      <element name="name" xsdType="xs:string" column="name" />
+      <element name="state" xsdType="xs:string" column="state" />
+      <element name="postal" xsdType="xs:string" column="postal" />
+      <element name="creationDate" xsdType="xs:timestamp" column="creationDate" />
+      <element name="miles" xsdType="xs:integer" column="miles" />
+    </result>
+  </query>
+  <resource path="flights_customers" method="GET">
+    <call-query href="select_all_flights_customers_query" />
+  </resource>
+  <query id="insert_flights_customers_query" useConfig="default">
+    <sql>INSERT INTO flights_customers(accountID,country,city,street,accountType,name,state,postal,creationDate,miles) VALUES(?,?,?,?,?,?,?,?,?,?)</sql>
+    <param type="IN" name="accountID" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="country" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="city" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="street" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="accountType" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="name" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="state" sqlType="STRING" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="postal" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="creationDate" sqlType="TIMESTAMP" paramType="SCALAR" ordinal="9" />
+    <param type="IN" name="miles" sqlType="INTEGER" paramType="SCALAR" ordinal="10" />
+  </query>
+  <resource path="flights_customers" method="POST">
+    <call-query href="insert_flights_customers_query">
+      <with-param name="accountID" query-param="accountID" />
+      <with-param name="country" query-param="country" />
+      <with-param name="city" query-param="city" />
+      <with-param name="street" query-param="street" />
+      <with-param name="accountType" query-param="accountType" />
+      <with-param name="name" query-param="name" />
+      <with-param name="state" query-param="state" />
+      <with-param name="postal" query-param="postal" />
+      <with-param name="creationDate" query-param="creationDate" />
+      <with-param name="miles" query-param="miles" />
+    </call-query>
+  </resource>
+  <query id="select_all_flights_transactions_query" useConfig="default">
+    <sql>SELECT transactionID, amount, customerRef, flightID, region FROM flights_transactions</sql>
+    <result rowName="flights_transactions" element="flights_transactionsCollection">
+      <element name="amount" xsdType="xs:integer" column="amount" />
+      <element name="customerRef" xsdType="xs:string" column="customerRef" />
+      <element name="flightID" xsdType="xs:string" column="flightID" />
+      <element name="region" xsdType="xs:string" column="region" />
+      <element name="transactionID" xsdType="xs:string" column="transactionID" />
+    </result>
+  </query>
+  <resource path="flights_transactions" method="GET">
+    <call-query href="select_all_flights_transactions_query" />
+  </resource>
+  <query id="insert_flights_transactions_query" useConfig="default">
+    <sql>INSERT INTO flights_transactions(amount,customerRef,flightID,region,transactionID) VALUES(?,?,?,?,?)</sql>
+    <param type="IN" name="amount" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="customerRef" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="flightID" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="region" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="transactionID" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+  </query>
+  <resource path="flights_transactions" method="POST">
+    <call-query href="insert_flights_transactions_query">
+      <with-param name="amount" query-param="amount" />
+      <with-param name="customerRef" query-param="customerRef" />
+      <with-param name="flightID" query-param="flightID" />
+      <with-param name="region" query-param="region" />
+      <with-param name="transactionID" query-param="transactionID" />
+    </call-query>
+  </resource>
+  <query id="update_flights_transactions_query" useConfig="default">
+    <sql>UPDATE flights_transactions SET amount=?,customerRef=?,flightID=?,region=? WHERE transactionID=?</sql>
+    <param type="IN" name="amount" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="customerRef" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="flightID" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="region" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="transactionID" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+  </query>
+  <resource path="flights_transactions" method="PUT">
+    <call-query href="update_flights_transactions_query">
+      <with-param name="amount" query-param="amount" />
+      <with-param name="customerRef" query-param="customerRef" />
+      <with-param name="flightID" query-param="flightID" />
+      <with-param name="region" query-param="region" />
+      <with-param name="transactionID" query-param="transactionID" />
+    </call-query>
+  </resource>
+  <query id="delete_flights_transactions_query" useConfig="default">
+    <sql>DELETE FROM flights_transactions WHERE transactionID=?</sql>
+    <param type="IN" name="transactionID" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="flights_transactions" method="DELETE">
+    <call-query href="delete_flights_transactions_query">
+      <with-param name="transactionID" query-param="transactionID" />
+    </call-query>
+  </resource>
+  <query id="select_all_qantas_query" useConfig="default">
+    <sql>SELECT airline, flightCode, fromAirportCode, toAirportCode, departureDate, price, planeType, totalSeats, emptySeats FROM qantas</sql>
+    <result rowName="qantas" element="qantasCollection">
+      <element name="flightCode" xsdType="xs:string" column="flightCode" />
+      <element name="price" xsdType="xs:double" column="price" />
+      <element name="departureDate" xsdType="xs:date" column="departureDate" />
+      <element name="airline" xsdType="xs:string" column="airline" />
+      <element name="fromAirportCode" xsdType="xs:string" column="fromAirportCode" />
+      <element name="planeType" xsdType="xs:string" column="planeType" />
+      <element name="totalSeats" xsdType="xs:integer" column="totalSeats" />
+      <element name="toAirportCode" xsdType="xs:string" column="toAirportCode" />
+      <element name="emptySeats" xsdType="xs:integer" column="emptySeats" />
+    </result>
+  </query>
+  <resource path="qantas" method="GET">
+    <call-query href="select_all_qantas_query" />
+  </resource>
+  <query id="insert_qantas_query" useConfig="default">
+    <sql>INSERT INTO qantas(flightCode,price,departureDate,airline,fromAirportCode,planeType,totalSeats,toAirportCode,emptySeats) VALUES(?,?,?,?,?,?,?,?,?)</sql>
+    <param type="IN" name="flightCode" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="price" sqlType="DOUBLE" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="departureDate" sqlType="DATE" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="airline" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="fromAirportCode" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="planeType" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="totalSeats" sqlType="INTEGER" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="toAirportCode" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="emptySeats" sqlType="INTEGER" paramType="SCALAR" ordinal="9" />
+  </query>
+  <resource path="qantas" method="POST">
+    <call-query href="insert_qantas_query">
+      <with-param name="flightCode" query-param="flightCode" />
+      <with-param name="price" query-param="price" />
+      <with-param name="departureDate" query-param="departureDate" />
+      <with-param name="airline" query-param="airline" />
+      <with-param name="fromAirportCode" query-param="fromAirportCode" />
+      <with-param name="planeType" query-param="planeType" />
+      <with-param name="totalSeats" query-param="totalSeats" />
+      <with-param name="toAirportCode" query-param="toAirportCode" />
+      <with-param name="emptySeats" query-param="emptySeats" />
+    </call-query>
+  </resource>
+  <query id="update_qantas_query" useConfig="default">
+    <sql>UPDATE qantas SET flightCode=?,price=?,departureDate=?,airline=?,fromAirportCode=?,planeType=?,totalSeats=?,toAirportCode=?,emptySeats=? WHERE ID=?</sql>
+    <param type="IN" name="flightCode" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="price" sqlType="DOUBLE" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="departureDate" sqlType="DATE" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="airline" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="fromAirportCode" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="planeType" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="totalSeats" sqlType="INTEGER" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="toAirportCode" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="emptySeats" sqlType="INTEGER" paramType="SCALAR" ordinal="9" />
+    <param type="IN" name="ID" sqlType="INTEGER" paramType="SCALAR" ordinal="10" />
+  </query>
+  <resource path="qantas" method="PUT">
+    <call-query href="update_qantas_query">
+      <with-param name="flightCode" query-param="flightCode" />
+      <with-param name="price" query-param="price" />
+      <with-param name="departureDate" query-param="departureDate" />
+      <with-param name="airline" query-param="airline" />
+      <with-param name="fromAirportCode" query-param="fromAirportCode" />
+      <with-param name="planeType" query-param="planeType" />
+      <with-param name="totalSeats" query-param="totalSeats" />
+      <with-param name="toAirportCode" query-param="toAirportCode" />
+      <with-param name="emptySeats" query-param="emptySeats" />
+      <with-param name="ID" query-param="ID" />
+    </call-query>
+  </resource>
+  <query id="delete_qantas_query" useConfig="default">
+    <sql>DELETE FROM qantas WHERE ID=?</sql>
+    <param type="IN" name="ID" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="qantas" method="DELETE">
+    <call-query href="delete_qantas_query">
+      <with-param name="ID" query-param="ID" />
+    </call-query>
+  </resource>
+  <query id="select_all_banking_account_query" useConfig="default">
+    <sql>SELECT account_id, balance, customer_ref FROM banking_account</sql>
+    <result rowName="banking_account" element="banking_accountCollection">
+      <element name="account_id" xsdType="xs:integer" column="account_id" />
+      <element name="balance" xsdType="xs:double" column="balance" />
+      <element name="customer_ref" xsdType="xs:integer" column="customer_ref" />
+    </result>
+  </query>
+  <resource path="banking_account" method="GET">
+    <call-query href="select_all_banking_account_query" />
+  </resource>
+  <query id="insert_banking_account_query" useConfig="default">
+    <sql>INSERT INTO banking_account(account_id,balance,customer_ref) VALUES(?,?,?)</sql>
+    <param type="IN" name="account_id" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="balance" sqlType="DOUBLE" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="customer_ref" sqlType="INTEGER" paramType="SCALAR" ordinal="3" />
+  </query>
+  <resource path="banking_account" method="POST">
+    <call-query href="insert_banking_account_query">
+      <with-param name="account_id" query-param="account_id" />
+      <with-param name="balance" query-param="balance" />
+      <with-param name="customer_ref" query-param="customer_ref" />
+    </call-query>
+  </resource>
+  <query id="update_banking_account_query" useConfig="default">
+    <sql>UPDATE banking_account SET balance=?,customer_ref=? WHERE account_id=?</sql>
+    <param type="IN" name="balance" sqlType="DOUBLE" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="customer_ref" sqlType="INTEGER" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="account_id" sqlType="INTEGER" paramType="SCALAR" ordinal="3" />
+  </query>
+  <resource path="banking_account" method="PUT">
+    <call-query href="update_banking_account_query">
+      <with-param name="balance" query-param="balance" />
+      <with-param name="customer_ref" query-param="customer_ref" />
+      <with-param name="account_id" query-param="account_id" />
+    </call-query>
+  </resource>
+  <query id="delete_banking_account_query" useConfig="default">
+    <sql>DELETE FROM banking_account WHERE account_id=?</sql>
+    <param type="IN" name="account_id" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="banking_account" method="DELETE">
+    <call-query href="delete_banking_account_query">
+      <with-param name="account_id" query-param="account_id" />
+    </call-query>
+  </resource>
+  <query id="select_all_banking_customer_query" useConfig="default">
+    <sql>SELECT customer_id, firstName, lastName FROM banking_customer</sql>
+    <result rowName="banking_customer" element="banking_customerCollection">
+      <element name="firstName" xsdType="xs:string" column="firstName" />
+      <element name="lastName" xsdType="xs:string" column="lastName" />
+      <element name="customer_id" xsdType="xs:integer" column="customer_id" />
+    </result>
+  </query>
+  <resource path="banking_customer" method="GET">
+    <call-query href="select_all_banking_customer_query" />
+  </resource>
+  <query id="insert_banking_customer_query" useConfig="default">
+    <sql>INSERT INTO banking_customer(firstName,lastName,customer_id) VALUES(?,?,?)</sql>
+    <param type="IN" name="firstName" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="lastName" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="customer_id" sqlType="INTEGER" paramType="SCALAR" ordinal="3" />
+  </query>
+  <resource path="banking_customer" method="POST">
+    <call-query href="insert_banking_customer_query">
+      <with-param name="firstName" query-param="firstName" />
+      <with-param name="lastName" query-param="lastName" />
+      <with-param name="customer_id" query-param="customer_id" />
+    </call-query>
+  </resource>
+  <query id="update_banking_customer_query" useConfig="default">
+    <sql>UPDATE banking_customer SET firstName=?,lastName=? WHERE customer_id=?</sql>
+    <param type="IN" name="firstName" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="lastName" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="customer_id" sqlType="INTEGER" paramType="SCALAR" ordinal="3" />
+  </query>
+  <resource path="banking_customer" method="PUT">
+    <call-query href="update_banking_customer_query">
+      <with-param name="firstName" query-param="firstName" />
+      <with-param name="lastName" query-param="lastName" />
+      <with-param name="customer_id" query-param="customer_id" />
+    </call-query>
+  </resource>
+  <query id="delete_banking_customer_query" useConfig="default">
+    <sql>DELETE FROM banking_customer WHERE customer_id=?</sql>
+    <param type="IN" name="customer_id" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="banking_customer" method="DELETE">
+    <call-query href="delete_banking_customer_query">
+      <with-param name="customer_id" query-param="customer_id" />
+    </call-query>
+  </resource>
+  <query id="select_all_american_query" useConfig="default">
+    <sql>SELECT code1, code2, airlineName, toAirport, fromAirport, takeOffDate, price, planeType, seatsAvailable, totalSeats FROM american</sql>
+    <result rowName="american" element="americanCollection">
+      <element name="toAirport" xsdType="xs:string" column="toAirport" />
+      <element name="code2" xsdType="xs:string" column="code2" />
+      <element name="code1" xsdType="xs:string" column="code1" />
+      <element name="price" xsdType="xs:smallint" column="price" />
+      <element name="takeOffDate" xsdType="xs:date" column="takeOffDate" />
+      <element name="fromAirport" xsdType="xs:string" column="fromAirport" />
+      <element name="airlineName" xsdType="xs:string" column="airlineName" />
+      <element name="planeType" xsdType="xs:string" column="planeType" />
+      <element name="seatsAvailable" xsdType="xs:smallint" column="seatsAvailable" />
+      <element name="totalSeats" xsdType="xs:smallint" column="totalSeats" />
+    </result>
+  </query>
+  <resource path="american" method="GET">
+    <call-query href="select_all_american_query" />
+  </resource>
+  <query id="insert_american_query" useConfig="default">
+    <sql>INSERT INTO american(toAirport,code2,code1,price,takeOffDate,fromAirport,airlineName,planeType,seatsAvailable,totalSeats) VALUES(?,?,?,?,?,?,?,?,?,?)</sql>
+    <param type="IN" name="toAirport" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="code2" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="code1" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="price" sqlType="SMALLINT" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="takeOffDate" sqlType="DATE" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="fromAirport" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="airlineName" sqlType="STRING" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="planeType" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="seatsAvailable" sqlType="SMALLINT" paramType="SCALAR" ordinal="9" />
+    <param type="IN" name="totalSeats" sqlType="SMALLINT" paramType="SCALAR" ordinal="10" />
+  </query>
+  <resource path="american" method="POST">
+    <call-query href="insert_american_query">
+      <with-param name="toAirport" query-param="toAirport" />
+      <with-param name="code2" query-param="code2" />
+      <with-param name="code1" query-param="code1" />
+      <with-param name="price" query-param="price" />
+      <with-param name="takeOffDate" query-param="takeOffDate" />
+      <with-param name="fromAirport" query-param="fromAirport" />
+      <with-param name="airlineName" query-param="airlineName" />
+      <with-param name="planeType" query-param="planeType" />
+      <with-param name="seatsAvailable" query-param="seatsAvailable" />
+      <with-param name="totalSeats" query-param="totalSeats" />
+    </call-query>
+  </resource>
+  <query id="update_american_query" useConfig="default">
+    <sql>UPDATE american SET toAirport=?,code2=?,code1=?,price=?,takeOffDate=?,fromAirport=?,airlineName=?,planeType=?,seatsAvailable=?,totalSeats=? WHERE ID=?</sql>
+    <param type="IN" name="toAirport" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="code2" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="code1" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="price" sqlType="SMALLINT" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="takeOffDate" sqlType="DATE" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="fromAirport" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="airlineName" sqlType="STRING" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="planeType" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="seatsAvailable" sqlType="SMALLINT" paramType="SCALAR" ordinal="9" />
+    <param type="IN" name="totalSeats" sqlType="SMALLINT" paramType="SCALAR" ordinal="10" />
+    <param type="IN" name="ID" sqlType="INTEGER" paramType="SCALAR" ordinal="11" />
+  </query>
+  <resource path="american" method="PUT">
+    <call-query href="update_american_query">
+      <with-param name="toAirport" query-param="toAirport" />
+      <with-param name="code2" query-param="code2" />
+      <with-param name="code1" query-param="code1" />
+      <with-param name="price" query-param="price" />
+      <with-param name="takeOffDate" query-param="takeOffDate" />
+      <with-param name="fromAirport" query-param="fromAirport" />
+      <with-param name="airlineName" query-param="airlineName" />
+      <with-param name="planeType" query-param="planeType" />
+      <with-param name="seatsAvailable" query-param="seatsAvailable" />
+      <with-param name="totalSeats" query-param="totalSeats" />
+      <with-param name="ID" query-param="ID" />
+    </call-query>
+  </resource>
+  <query id="delete_american_query" useConfig="default">
+    <sql>DELETE FROM american WHERE ID=?</sql>
+    <param type="IN" name="ID" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="american" method="DELETE">
+    <call-query href="delete_american_query">
+      <with-param name="ID" query-param="ID" />
+    </call-query>
+  </resource>
+  <query id="select_all_accounts_query" useConfig="default">
+    <sql>SELECT name, street, city, state, postal, country FROM accounts</sql>
+    <result rowName="accounts" element="accountsCollection">
+      <element name="country" xsdType="xs:string" column="country" />
+      <element name="city" xsdType="xs:string" column="city" />
+      <element name="street" xsdType="xs:string" column="street" />
+      <element name="name" xsdType="xs:string" column="name" />
+      <element name="state" xsdType="xs:string" column="state" />
+      <element name="postal" xsdType="xs:string" column="postal" />
+    </result>
+  </query>
+  <resource path="accounts" method="GET">
+    <call-query href="select_all_accounts_query" />
+  </resource>
+  <query id="insert_accounts_query" useConfig="default">
+    <sql>INSERT INTO accounts(country,city,street,name,state,postal) VALUES(?,?,?,?,?,?)</sql>
+    <param type="IN" name="country" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="city" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="street" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="name" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="state" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="postal" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+  </query>
+  <resource path="accounts" method="POST">
+    <call-query href="insert_accounts_query">
+      <with-param name="country" query-param="country" />
+      <with-param name="city" query-param="city" />
+      <with-param name="street" query-param="street" />
+      <with-param name="name" query-param="name" />
+      <with-param name="state" query-param="state" />
+      <with-param name="postal" query-param="postal" />
+    </call-query>
+  </resource>
+  <query id="update_accounts_query" useConfig="default">
+    <sql>UPDATE accounts SET country=?,city=?,street=?,name=?,state=?,postal=? WHERE accountID=?</sql>
+    <param type="IN" name="country" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="city" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="street" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="name" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="state" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="postal" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="accountID" sqlType="INTEGER" paramType="SCALAR" ordinal="7" />
+  </query>
+  <resource path="accounts" method="PUT">
+    <call-query href="update_accounts_query">
+      <with-param name="country" query-param="country" />
+      <with-param name="city" query-param="city" />
+      <with-param name="street" query-param="street" />
+      <with-param name="name" query-param="name" />
+      <with-param name="state" query-param="state" />
+      <with-param name="postal" query-param="postal" />
+      <with-param name="accountID" query-param="accountID" />
+    </call-query>
+  </resource>
+  <query id="delete_accounts_query" useConfig="default">
+    <sql>DELETE FROM accounts WHERE accountID=?</sql>
+    <param type="IN" name="accountID" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="accounts" method="DELETE">
+    <call-query href="delete_accounts_query">
+      <with-param name="accountID" query-param="accountID" />
+    </call-query>
+  </resource>
+  <query id="select_all_flights_query" useConfig="default">
+    <sql>SELECT code1, code2, airlineName, toAirport, fromAirport, takeOffDate, price, planeType, seatsAvailable FROM flights</sql>
+    <result rowName="flights" element="flightsCollection">
+      <element name="toAirport" xsdType="xs:string" column="toAirport" />
+      <element name="code2" xsdType="xs:string" column="code2" />
+      <element name="code1" xsdType="xs:string" column="code1" />
+      <element name="price" xsdType="xs:smallint" column="price" />
+      <element name="takeOffDate" xsdType="xs:date" column="takeOffDate" />
+      <element name="fromAirport" xsdType="xs:string" column="fromAirport" />
+      <element name="airlineName" xsdType="xs:string" column="airlineName" />
+      <element name="planeType" xsdType="xs:string" column="planeType" />
+      <element name="seatsAvailable" xsdType="xs:string" column="seatsAvailable" />
+    </result>
+  </query>
+  <resource path="flights" method="GET">
+    <call-query href="select_all_flights_query" />
+  </resource>
+  <query id="insert_flights_query" useConfig="default">
+    <sql>INSERT INTO flights(toAirport,code2,code1,price,takeOffDate,fromAirport,airlineName,planeType,seatsAvailable) VALUES(?,?,?,?,?,?,?,?,?)</sql>
+    <param type="IN" name="toAirport" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="code2" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="code1" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="price" sqlType="SMALLINT" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="takeOffDate" sqlType="DATE" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="fromAirport" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="airlineName" sqlType="STRING" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="planeType" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="seatsAvailable" sqlType="STRING" paramType="SCALAR" ordinal="9" />
+  </query>
+  <resource path="flights" method="POST">
+    <call-query href="insert_flights_query">
+      <with-param name="toAirport" query-param="toAirport" />
+      <with-param name="code2" query-param="code2" />
+      <with-param name="code1" query-param="code1" />
+      <with-param name="price" query-param="price" />
+      <with-param name="takeOffDate" query-param="takeOffDate" />
+      <with-param name="fromAirport" query-param="fromAirport" />
+      <with-param name="airlineName" query-param="airlineName" />
+      <with-param name="planeType" query-param="planeType" />
+      <with-param name="seatsAvailable" query-param="seatsAvailable" />
+    </call-query>
+  </resource>
+  <query id="update_flights_query" useConfig="default">
+    <sql>UPDATE flights SET toAirport=?,code2=?,code1=?,price=?,takeOffDate=?,fromAirport=?,airlineName=?,planeType=?,seatsAvailable=? WHERE ID=?</sql>
+    <param type="IN" name="toAirport" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="code2" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="code1" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="price" sqlType="SMALLINT" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="takeOffDate" sqlType="DATE" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="fromAirport" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="airlineName" sqlType="STRING" paramType="SCALAR" ordinal="7" />
+    <param type="IN" name="planeType" sqlType="STRING" paramType="SCALAR" ordinal="8" />
+    <param type="IN" name="seatsAvailable" sqlType="STRING" paramType="SCALAR" ordinal="9" />
+    <param type="IN" name="ID" sqlType="INTEGER" paramType="SCALAR" ordinal="10" />
+  </query>
+  <resource path="flights" method="PUT">
+    <call-query href="update_flights_query">
+      <with-param name="toAirport" query-param="toAirport" />
+      <with-param name="code2" query-param="code2" />
+      <with-param name="code1" query-param="code1" />
+      <with-param name="price" query-param="price" />
+      <with-param name="takeOffDate" query-param="takeOffDate" />
+      <with-param name="fromAirport" query-param="fromAirport" />
+      <with-param name="airlineName" query-param="airlineName" />
+      <with-param name="planeType" query-param="planeType" />
+      <with-param name="seatsAvailable" query-param="seatsAvailable" />
+      <with-param name="ID" query-param="ID" />
+    </call-query>
+  </resource>
+  <query id="delete_flights_query" useConfig="default">
+    <sql>DELETE FROM flights WHERE ID=?</sql>
+    <param type="IN" name="ID" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="flights" method="DELETE">
+    <call-query href="delete_flights_query">
+      <with-param name="ID" query-param="ID" />
+    </call-query>
+  </resource>
+  <query id="select_all_contacts_query" useConfig="default">
+    <sql>SELECT id, firstName, lastName, phone, email, title, department FROM contacts</sql>
+    <result rowName="contacts" element="contactsCollection">
+      <element name="firstName" xsdType="xs:string" column="firstName" />
+      <element name="lastName" xsdType="xs:string" column="lastName" />
+      <element name="phone" xsdType="xs:string" column="phone" />
+      <element name="id" xsdType="xs:integer" column="id" />
+      <element name="title" xsdType="xs:string" column="title" />
+      <element name="department" xsdType="xs:string" column="department" />
+      <element name="email" xsdType="xs:string" column="email" />
+    </result>
+  </query>
+  <resource path="contacts" method="GET">
+    <call-query href="select_all_contacts_query" />
+  </resource>
+  <query id="insert_contacts_query" useConfig="default">
+    <sql>INSERT INTO contacts(firstName,lastName,phone,id,title,department,email) VALUES(?,?,?,?,?,?,?)</sql>
+    <param type="IN" name="firstName" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="lastName" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="phone" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="id" sqlType="INTEGER" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="title" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="department" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="email" sqlType="STRING" paramType="SCALAR" ordinal="7" />
+  </query>
+  <resource path="contacts" method="POST">
+    <call-query href="insert_contacts_query">
+      <with-param name="firstName" query-param="firstName" />
+      <with-param name="lastName" query-param="lastName" />
+      <with-param name="phone" query-param="phone" />
+      <with-param name="id" query-param="id" />
+      <with-param name="title" query-param="title" />
+      <with-param name="department" query-param="department" />
+      <with-param name="email" query-param="email" />
+    </call-query>
+  </resource>
+  <query id="update_contacts_query" useConfig="default">
+    <sql>UPDATE contacts SET firstName=?,lastName=?,phone=?,title=?,department=?,email=? WHERE id=?</sql>
+    <param type="IN" name="firstName" sqlType="STRING" paramType="SCALAR" ordinal="1" />
+    <param type="IN" name="lastName" sqlType="STRING" paramType="SCALAR" ordinal="2" />
+    <param type="IN" name="phone" sqlType="STRING" paramType="SCALAR" ordinal="3" />
+    <param type="IN" name="title" sqlType="STRING" paramType="SCALAR" ordinal="4" />
+    <param type="IN" name="department" sqlType="STRING" paramType="SCALAR" ordinal="5" />
+    <param type="IN" name="email" sqlType="STRING" paramType="SCALAR" ordinal="6" />
+    <param type="IN" name="id" sqlType="INTEGER" paramType="SCALAR" ordinal="7" />
+  </query>
+  <resource path="contacts" method="PUT">
+    <call-query href="update_contacts_query">
+      <with-param name="firstName" query-param="firstName" />
+      <with-param name="lastName" query-param="lastName" />
+      <with-param name="phone" query-param="phone" />
+      <with-param name="title" query-param="title" />
+      <with-param name="department" query-param="department" />
+      <with-param name="email" query-param="email" />
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </resource>
+  <query id="delete_contacts_query" useConfig="default">
+    <sql>DELETE FROM contacts WHERE id=?</sql>
+    <param type="IN" name="id" sqlType="INTEGER" paramType="SCALAR" ordinal="1" />
+  </query>
+  <resource path="contacts" method="DELETE">
+    <call-query href="delete_contacts_query">
+      <with-param name="id" query-param="id" />
+    </call-query>
+  </resource>
+</data>

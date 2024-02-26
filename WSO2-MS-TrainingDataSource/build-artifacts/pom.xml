@@ -13,4 +13,7 @@
   <packaging>pom</packaging>
   <name>WSO2-MS-TrainingDataSource_module</name>
   <description>WSO2-MS-TrainingDataSource_module</description>
+  <modules>
+    <module>datasource/datasource</module>
+  </modules>
 </project>
