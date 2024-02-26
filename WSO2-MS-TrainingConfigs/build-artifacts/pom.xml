@@ -15,5 +15,6 @@
   <description>WSO2-MS-TrainingConfigs_module</description>
   <modules>
     <module>api/AccountsAPI</module>
+    <module>endpoints/GetFlightsCustomersEndpoint</module>
   </modules>
 </project>

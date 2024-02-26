@@ -1,4 +1,4 @@
-<data transports="http https" serviceStatus="active" serviceNamespace="http://ws.wso2.org/dataservice" name="datasource_DataService" enableBoxcarring="false" enableBatchRequests="false" disableLegacyBoxcarringMode="false">
+<data transports="http https" serviceStatus="active" serviceNamespace="http://ws.wso2.org/dataservice" name="MS_Training_DataService" enableBoxcarring="false" enableBatchRequests="false" disableLegacyBoxcarringMode="false">
   <description>single service for whole database</description>
   <config id="default">
     <property name="carbon_datasource_name">AccountsDataSource</property>

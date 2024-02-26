@@ -14,15 +14,65 @@
   <name>WSO2-MS-TrainingCompositeExporter</name>
   <description>WSO2-MS-TrainingCompositeExporter</description>
   <properties>
+    <com.example.datasource_._datasource>capp/DataServicesServer</com.example.datasource_._datasource>
+    <com.example.resource_._XMLtoJSON_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._XMLtoJSON_inputSchema>
     <com.example.api_._AccountsAPI>capp/EnterpriseServiceBus</com.example.api_._AccountsAPI>
+    <com.example.endpoint_._GetFlightsCustomersEndpoint>capp/EnterpriseServiceBus</com.example.endpoint_._GetFlightsCustomersEndpoint>
+    <com.example.resource_._XMLtoJSON>capp/EnterpriseServiceBus</com.example.resource_._XMLtoJSON>
+    <com.example.resource_._XMLtoJSON_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.resource_._XMLtoJSON_xsltStyleSheet>
+    <com.example.resource_._XMLtoJSON_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._XMLtoJSON_outputSchema>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,synapse/metadata=yaml,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <com.example.resource_._JsonMapper_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._JsonMapper_inputSchema>
+    <com.example.dataservice_._datasource_DataService>capp/DataServicesServer</com.example.dataservice_._datasource_DataService>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>com.example.datasource</groupId>
+      <artifactId>datasource</artifactId>
+      <version>5.2.45</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>XMLtoJSON_inputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
     <dependency>
       <groupId>com.example.api</groupId>
       <artifactId>AccountsAPI</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>GetFlightsCustomersEndpoint</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>XMLtoJSON</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>XMLtoJSON_xsltStyleSheet</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>XMLtoJSON_outputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.dataservice</groupId>
+      <artifactId>datasource_DataService</artifactId>
+      <version>1.0.0</version>
+      <type>dbs</type>
     </dependency>
   </dependencies>
   <repositories>

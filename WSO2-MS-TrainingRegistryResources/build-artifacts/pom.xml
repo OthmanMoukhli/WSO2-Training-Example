@@ -13,4 +13,10 @@
   <packaging>pom</packaging>
   <name>WSO2-MS-TrainingRegistryResources_module</name>
   <description>WSO2-MS-TrainingRegistryResources_module</description>
+  <modules>
+    <module>resource/XMLtoJSON</module>
+    <module>resource/XMLtoJSON_inputSchema</module>
+    <module>resource/XMLtoJSON_outputSchema</module>
+    <module>resource/XMLtoJSON_xsltStyleSheet</module>
+  </modules>
 </project>
