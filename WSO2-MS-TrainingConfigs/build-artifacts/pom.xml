@@ -13,4 +13,7 @@
   <packaging>pom</packaging>
   <name>WSO2-MS-TrainingConfigs_module</name>
   <description>WSO2-MS-TrainingConfigs_module</description>
+  <modules>
+    <module>api/AccountsAPI</module>
+  </modules>
 </project>
