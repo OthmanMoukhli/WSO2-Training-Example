@@ -3,47 +3,35 @@
   "outputType" : "JSON",
   "id" : "http://wso2jsonschema.org",
   "title" : "root",
-  "type" : "object",
-  "properties" : {
-    "flights_customersCollection" : {
-      "id" : "http://wso2jsonschema.org/flights_customersCollection",
-      "type" : "object",
-      "properties" : {
-        "flights_customers" : {
-          "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers",
-          "type" : "array",
-          "items" : [ {
-            "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0",
-            "type" : "object",
-            "properties" : {
-              "id" : {
-                "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/id",
-                "type" : "number"
-              },
-              "name" : {
-                "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/name",
-                "type" : "string"
-              },
-              "type" : {
-                "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/type",
-                "type" : "string"
-              },
-              "address" : {
-                "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/address",
-                "type" : "string"
-              },
-              "air_miles" : {
-                "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/air_miles",
-                "type" : "number"
-              },
-              "created_at" : {
-                "id" : "http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/created_at",
-                "type" : "string"
-              }
-            }
-          } ]
-        }
+  "type" : "array",
+  "items" : [ {
+    "properties" : {
+      "id" : {
+        "id" : "http://wso2jsonschema.org/0/id",
+        "type" : "number"
+      },
+      "name" : {
+        "id" : "http://wso2jsonschema.org/0/name",
+        "type" : "string"
+      },
+      "type" : {
+        "id" : "http://wso2jsonschema.org/0/type",
+        "type" : "string"
+      },
+      "address" : {
+        "id" : "http://wso2jsonschema.org/0/address",
+        "type" : "string"
+      },
+      "air_miles" : {
+        "id" : "http://wso2jsonschema.org/0/air_miles",
+        "type" : "number"
+      },
+      "created_at" : {
+        "id" : "http://wso2jsonschema.org/0/created_at",
+        "type" : "string"
       }
-    }
-  }
+    },
+    "id" : "http://wso2jsonschema.org/0",
+    "type" : "object"
+  } ]
 }

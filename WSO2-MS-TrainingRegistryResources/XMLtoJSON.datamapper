@@ -10,7 +10,8 @@
               <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/flights_customersCollection/flights_customers/0/accountID"/>
               <properties key="nullable" value="false"/>
               <outNode>
-                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.0/@inNode"/>
+                <outgoingLink/>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@inNode"/>
               </outNode>
               <inNode/>
             </node>
@@ -46,7 +47,8 @@
               <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/flights_customersCollection/flights_customers/0/accountType"/>
               <properties key="nullable" value="false"/>
               <outNode>
-                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.2/@inNode"/>
+                <outgoingLink/>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.2/@inNode"/>
               </outNode>
               <inNode/>
             </node>
@@ -55,7 +57,8 @@
               <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/flights_customersCollection/flights_customers/0/name"/>
               <properties key="nullable" value="false"/>
               <outNode>
-                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.1/@inNode"/>
+                <outgoingLink/>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.1/@inNode"/>
               </outNode>
               <inNode/>
             </node>
@@ -81,7 +84,9 @@
               <properties key="type" value="string"/>
               <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/flights_customersCollection/flights_customers/0/creationDate"/>
               <properties key="nullable" value="false"/>
-              <outNode/>
+              <outNode>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.5/@inNode"/>
+              </outNode>
               <inNode/>
             </node>
             <node name="miles" schemaDataType="NUMBER" level="5">
@@ -89,8 +94,9 @@
               <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/flights_customersCollection/flights_customers/0/miles"/>
               <properties key="nullable" value="false"/>
               <outNode>
-                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.5/@inNode"/>
-                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.4/@inNode"/>
+                <outgoingLink/>
+                <outgoingLink/>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.4/@inNode"/>
               </outNode>
               <inNode/>
             </node>
@@ -129,72 +135,54 @@
     </treeNode>
   </input>
   <output>
-    <treeNode name="root" schemaDataType="OBJECT" level="1">
-      <node name="flights_customersCollection" schemaDataType="OBJECT" level="2">
-        <node name="flights_customers" level="3">
-          <node name="id" schemaDataType="STRING" level="4">
-            <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
-            <properties key="nullable" value="false"/>
-            <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/id"/>
-            <properties key="type" value="number"/>
-            <outNode/>
-            <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.0/@outNode/@outgoingLink.0"/>
-          </node>
-          <node name="name" schemaDataType="STRING" level="4">
-            <properties key="type" value="string"/>
-            <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/name"/>
-            <properties key="nullable" value="false"/>
-            <outNode/>
-            <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.5/@outNode/@outgoingLink.0"/>
-          </node>
-          <node name="type" schemaDataType="STRING" level="4">
-            <properties key="type" value="string"/>
-            <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/type"/>
-            <properties key="nullable" value="false"/>
-            <outNode/>
-            <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.4/@outNode/@outgoingLink.0"/>
-          </node>
-          <node name="address" schemaDataType="STRING" level="4">
-            <properties key="type" value="string"/>
-            <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/address"/>
-            <properties key="nullable" value="false"/>
-            <outNode/>
-            <inNode incomingLink="//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.0"/>
-          </node>
-          <node name="air_miles" schemaDataType="STRING" level="4">
-            <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
-            <properties key="nullable" value="false"/>
-            <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/air_miles"/>
-            <properties key="type" value="number"/>
-            <outNode/>
-            <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.9/@outNode/@outgoingLink.1"/>
-          </node>
-          <node name="created_at" schemaDataType="STRING" level="4">
-            <properties key="type" value="string"/>
-            <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/created_at"/>
-            <properties key="nullable" value="false"/>
-            <outNode/>
-            <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.9/@outNode/@outgoingLink.0"/>
-          </node>
-          <properties key="type" value="array"/>
-          <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers"/>
-          <properties key="items_id" value="http://wso2jsonschema.org/flights_customersCollection/flights_customers/0"/>
-          <properties key="items_type" value="object"/>
-          <properties key="nullable" value="false"/>
-          <properties key="properties_id" value="{id={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/id, type=string}, name={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/name, type=string}, type={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/type, type=string}, address={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/address, type=string}, air_miles={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/air_miles, type=string}, created_at={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/created_at, type=string}}"/>
-          <outNode/>
-          <inNode/>
-        </node>
-        <properties key="type" value="object"/>
-        <properties key="id" value="http://wso2jsonschema.org/flights_customersCollection"/>
+    <treeNode name="root" level="1">
+      <node name="id" schemaDataType="NUMBER" level="2">
+        <properties key="type" value="number"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/id"/>
         <properties key="nullable" value="false"/>
-        <properties key="properties_id" value="{flights_customers={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers, type=array, items=[{id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0, type=object, properties={id={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/id, type=string}, name={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/name, type=string}, type={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/type, type=string}, address={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/address, type=string}, air_miles={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/air_miles, type=string}, created_at={id=http://wso2jsonschema.org/flights_customersCollection/flights_customers/0/created_at, type=string}}}]}}"/>
         <outNode/>
-        <inNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.0/@outNode/@outgoingLink.1"/>
       </node>
-      <properties key="type" value="object"/>
+      <node name="name" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/name"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.5/@outNode/@outgoingLink.1"/>
+      </node>
+      <node name="type" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/type"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.4/@outNode/@outgoingLink.1"/>
+      </node>
+      <node name="address" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/address"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.1"/>
+      </node>
+      <node name="air_miles" schemaDataType="NUMBER" level="2">
+        <properties key="type" value="number"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/air_miles"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.9/@outNode/@outgoingLink.2"/>
+      </node>
+      <node name="created_at" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/created_at"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@node.8/@outNode/@outgoingLink.0"/>
+      </node>
+      <properties key="type" value="array"/>
       <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
       <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="items_id" value="http://wso2jsonschema.org/0"/>
+      <properties key="items_type" value="object"/>
       <properties key="nullable" value="false"/>
       <outNode/>
       <inNode/>
@@ -222,7 +210,8 @@
       <rightContainer>
         <rightConnectors>
           <outNode>
-            <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.3/@inNode"/>
+            <outgoingLink/>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.3/@inNode"/>
           </outNode>
         </rightConnectors>
       </rightContainer>
