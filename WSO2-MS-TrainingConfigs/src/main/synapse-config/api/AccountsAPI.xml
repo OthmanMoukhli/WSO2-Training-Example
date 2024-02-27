@@ -20,7 +20,7 @@
             <!--This is generated API skeleton.-->
             <!--Business Logic Goes Here-->
             <payloadFactory media-type="json">
-                <format>{"Response" : "Sample Response"}</format>
+                <format>{"message" : "Accounts created"}</format>
                 <args/>
             </payloadFactory>
             <loopback/>
